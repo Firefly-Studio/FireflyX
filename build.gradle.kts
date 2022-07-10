@@ -1,8 +1,12 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     `java-library`
     `maven-publish`
     id("io.izzel.taboolib") version "1.40"
     id("org.jetbrains.kotlin.jvm") version "1.5.10"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 taboolib {
@@ -31,22 +35,40 @@ taboolib {
 
 repositories {
     mavenCentral()
-    maven { url = uri("https://jitpack.io") }
+
+    maven {
+        name = "JitPack"
+        url = uri("https://jitpack.io/")
+    }
+
+    maven {
+        name = "SpigotMC"
+        url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
+    }
+
+    maven {
+        name = "CodeMC NMS"
+        url = uri("https://repo.codemc.org/repository/maven-public/")
+    }
 }
 
 dependencies {
-    compileOnly("ink.ptms:nms-all:1.0.0")
-    compileOnly("ink.ptms.core:v11900:11900-minimize:mapped")
-    compileOnly("ink.ptms.core:v11900:11900-minimize:universal")
-    compileOnly(kotlin("stdlib"))
-    compileOnly(fileTree("libs"))
+    compileOnly ("org.jetbrains.kotlin:kotlin-stdlib")
+    compileOnly ("ink.ptms:nms-all:1.0.0")
+    compileOnly ("ink.ptms.core:v11900:11900-minimize:mapped")
+    compileOnly ("ink.ptms.core:v11900:11900-minimize:universal")
+    compileOnly ("com.github.MilkBowl:VaultAPI:1.7")
+}
+
+tasks.withType<ShadowJar> {
+    manifest.attributes["Main-Class"] = "work.crash.micalhl.fireflyx.FireflyX"
 }
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+tasks.withType<KotlinCompile> {
     kotlinOptions {
         jvmTarget = "1.8"
         freeCompilerArgs = listOf("-Xjvm-default=all")

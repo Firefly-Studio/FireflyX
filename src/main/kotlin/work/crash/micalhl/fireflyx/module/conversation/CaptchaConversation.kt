@@ -28,5 +28,4 @@ class CaptchaConversation(private val user: ProxyPlayer, val func: () -> Unit) :
         }
         return END_OF_CONVERSATION
     }
-
 }

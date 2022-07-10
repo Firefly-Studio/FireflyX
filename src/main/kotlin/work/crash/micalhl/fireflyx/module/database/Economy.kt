@@ -71,5 +71,4 @@ class Economy {
             where { "user" eq user }
         }
     }
-
 }

@@ -3,11 +3,9 @@ package work.crash.micalhl.fireflyx.compat
 import net.milkbowl.vault.economy.AbstractEconomy
 import net.milkbowl.vault.economy.EconomyResponse
 import org.bukkit.OfflinePlayer
-import taboolib.module.chat.colored
 import work.crash.micalhl.fireflyx.api.FireflyXAPI
 import work.crash.micalhl.fireflyx.module.config.Settings
 import work.crash.micalhl.fireflyx.util.plugin
-import java.math.BigDecimal
 import java.text.DecimalFormat
 
 @Suppress("deprecation")
