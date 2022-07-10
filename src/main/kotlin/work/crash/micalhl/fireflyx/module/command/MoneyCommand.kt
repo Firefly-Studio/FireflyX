@@ -87,5 +87,4 @@ object MoneyCommand {
             }
         }
     }
-
 }
