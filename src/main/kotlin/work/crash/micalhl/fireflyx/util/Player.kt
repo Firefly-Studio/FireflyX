@@ -9,7 +9,5 @@ fun ProxyPlayer.toOfflinePlayer(): OfflinePlayer = plugin().server.getOfflinePla
 fun ProxyPlayer.toBKPlayer(): Player? {
     return if (isOnline()) {
         return plugin().server.getPlayer(uniqueId)
-    } else {
-        null
-    }
+    } else null
 }
