@@ -1,0 +1,12 @@
+Auth: true
+DispenserPatch: true
+Fly: true
+Home: true
+JoinQuitTip: true
+Money: true
+Online: true
+Ping: true
+Spawn: true
+TeleportRandom: true
+Tpa: true
+Tps: true

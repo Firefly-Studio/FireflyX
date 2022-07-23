@@ -15,6 +15,7 @@ taboolib {
     install("module-ui")
     install("module-nms")
     install("platform-bukkit")
+    install("expansion-command-helper")
     classifier = null
     version = "6.0.9-25"
 
@@ -23,7 +24,7 @@ taboolib {
             name("Mical")
         }
         dependencies {
-            name("Vault")
+            name("Vault").optional(true)
         }
     }
 }
@@ -31,6 +32,10 @@ taboolib {
 repositories {
     mavenCentral()
     maven { url = uri("https://jitpack.io") }
+    maven {
+        name = "spigotmc-repo"
+        url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
+    }
 }
 
 dependencies {
@@ -39,6 +44,7 @@ dependencies {
     compileOnly("ink.ptms.core:v11900:11900-minimize:universal")
     compileOnly(kotlin("stdlib"))
     compileOnly(fileTree("libs"))
+    compileOnly ("com.github.MilkBowl:VaultAPI:1.7")
 }
 
 tasks.withType<JavaCompile> {
