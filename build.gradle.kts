@@ -14,6 +14,9 @@ taboolib {
     install("module-lang")
     install("module-ui")
     install("module-nms")
+    install("module-nms-util")
+    install("module-kether")
+    install("module-metrics")
     install("platform-bukkit")
     install("expansion-command-helper")
     classifier = null
@@ -44,7 +47,7 @@ dependencies {
     compileOnly("ink.ptms.core:v11900:11900-minimize:universal")
     compileOnly(kotlin("stdlib"))
     compileOnly(fileTree("libs"))
-    compileOnly ("com.github.MilkBowl:VaultAPI:1.7")
+    compileOnly("com.github.MilkBowl:VaultAPI:1.7")
 }
 
 tasks.withType<JavaCompile> {
@@ -61,25 +64,4 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
-}
-
-publishing {
-    repositories {
-        maven {
-            url = uri("https://repo.tabooproject.org/repository/releases")
-            credentials {
-                username = project.findProperty("taboolibUsername").toString()
-                password = project.findProperty("taboolibPassword").toString()
-            }
-            authentication {
-                create<BasicAuthentication>("basic")
-            }
-        }
-    }
-    publications {
-        create<MavenPublication>("library") {
-            from(components["java"])
-            groupId = project.group.toString()
-        }
-    }
 }

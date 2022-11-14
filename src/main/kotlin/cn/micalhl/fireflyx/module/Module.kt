@@ -2,5 +2,9 @@ package cn.micalhl.fireflyx.module
 
 interface Module {
 
-    fun register()
+    var allow: Boolean
+
+    fun init() {
+        allow = true
+    }
 }
